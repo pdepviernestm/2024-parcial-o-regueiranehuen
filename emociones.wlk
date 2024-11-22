@@ -41,6 +41,8 @@ class Furia inherits Emocion{
 
     var palabrotas = []
 
+    method palabrotas()=palabrotas
+
     override method puedeLiberarse(persona){
         return super(persona) && palabrotas.any({p=>p.size() > 7})
     }
