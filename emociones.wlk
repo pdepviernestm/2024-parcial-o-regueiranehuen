@@ -12,7 +12,7 @@ class Emocion{
 
     method intensidad()=intensidad
 
-    // Num es un valor arbitrario que elijo yo
+    // valorElevada es un valor arbitrario que elijo yo
     method intensidadElevada()=intensidad > valorElevada
 
     method puedeLiberarse(persona){
