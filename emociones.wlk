@@ -25,6 +25,7 @@ class Emocion{
         cantEventos+=1
     }
 
+
 }
 
 class Furia inherits Emocion{
