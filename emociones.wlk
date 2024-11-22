@@ -1,17 +1,28 @@
+// Muchas veces pasa que al liberarse la emoción, algo se altera en ella que hace que no pueda volver a liberarse ante un próximo evento. 
+
 class Emocion{
     var intensidad=0 // Por default
-    var numElevada
+    var valorElevada // 5)
+    var cantEventos = 0
+    var puedeVolverALiberarse = true // Inicializada en true
+
+
+    method cantEventos()=cantEventos
 
     method intensidad()=intensidad
 
     // Num es un valor arbitrario que elijo yo
-    method intensidadElevada()=intensidad > numElevada
+    method intensidadElevada()=intensidad > valorElevada
 
     method puedeLiberarse(persona){
-        return self.intensidadElevada()
+        return self.intensidadElevada() && puedeVolverALiberarse
     }
     method liberarse(evento){
         intensidad -= evento.impacto()
+    }
+
+    method agregarEvento(){
+        cantEventos+=1
     }
 
 }
