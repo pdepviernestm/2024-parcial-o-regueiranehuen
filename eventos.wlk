@@ -1,0 +1,3 @@
+class Evento{
+    var descripcion = ""
+}
