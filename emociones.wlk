@@ -6,6 +6,14 @@ class Emocion{
 
     // Num es un valor arbitrario que elijo yo
     method intensidadElevada()=intensidad > numElevada
+
+    method puedeLiberarse(persona){
+        return self.intensidadElevada()
+    }
+    method liberarse(evento){
+        intensidad -= evento.impacto()
+    }
+
 }
 
 class Furia inherits Emocion{
@@ -16,29 +24,44 @@ class Furia inherits Emocion{
 
     var palabrotas = []
 
-    method puedeLiberarse(persona){
-        return self.intensidadElevada() && palabrotas.any({p=>p.size() > 7})
+    override method puedeLiberarse(persona){
+        return super(persona) && palabrotas.any({p=>p.size() > 7})
     }
 
-    method liberarse(evento){
-        intensidad -= evento.impacto()
+    override method liberarse(evento){
+        super(evento)
         palabrotas.remove(palabrotas.first())
     }
 
 }
 
 class Alegria inherits Emocion{
-    
-    
 
+    override method puedeLiberarse(persona){
+        return super(persona) && persona.cantEventos().even()
+    }
 
-
-    method puedeLiberarse(persona){
+    override method liberarse(evento){
+        
+        intensidad = 0.max(super(evento)) // >= 0
         
     }
 
-    method liberarse(evento){
+}
 
+class Tristeza inherits Emocion{
+
+    var causa = self.causaInicial()
+
+    method causaInicial()="melancolia"
+
+    override method puedeLiberarse(persona){
+        return super(persona) && causa != "melancolia"
+    }
+
+    override method liberarse(evento){
+        super(evento)
+        causa = evento.descripcion()
     }
 
 }
