@@ -5,34 +5,29 @@ import emociones.*
 
 describe "Tests"{
 
-    var furia = new Furia(valorElevada=40,intensidad = 5,palabrotas=["zapallo"],cantEventos=2)
+    var furia = new Furia(valorElevada=40,intensidad = 5,palabrotas=["zapallo"],cantEventos=0)
     var alegria = new Furia(valorElevada=40,intensidad = 5,cantEventos=3)
     var tristeza = new Tristeza(valorElevada=40,intensidad=5,cantEventos=0)
     var temor = new DesagradoYTemor(valorElevada=40, intensidad=5)
     var ansiedad=new Ansiedad(valorElevada=40, intensidad=5,nivelAnsiedad=9000)
 
     var pepe = new Persona(edad = 13,emociones=[furia,tristeza,ansiedad,temor])
-    var carlos = new Persona(edad = 13,emociones=[furia,tristeza])
+    var carlos = new Persona(edad = 13,emociones=[tristeza])
 
     var perdioBoca = new Evento(descripcion="perdio boca",impacto = 100)
     
 
-    var grupo1 = new Grupo(integrantes=[pepe])
+    var grupo1 = new Grupo(integrantes=[pepe,carlos])
 
-    var cantEventosTristezaInicial = tristeza.cantEventos()
 
-    test "Todos los integrantes del grupo1 ven perder a Boca y todas sus emociones suman un evento"{
+    test "Todos los integrantes del grupo1 ven perder a Boca y furia suma un evento, mientras tristeza suma 2"{
 
-        var cantEventosFuria = furia.cantEventos()
         
-
-        tristeza.setCausa("Chiquito Romero")
-
         grupo1.vivirMismoEvento(perdioBoca)
         
-        
-        assert.equals(tristeza.cantEventos(), cantEventosTristezaInicial + 2) // Por los dos integrantes del grupo
-        
+        assert.equals(1, furia.cantEventos())
+
+        assert.equals(2, tristeza.cantEventos())
 
     }
 }
