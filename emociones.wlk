@@ -21,6 +21,10 @@ class Emocion{
         intensidad -= evento.impacto()
     }
 
+    method alLiberarse(evento){
+        return intensidad - evento.impacto()
+    }
+
     method agregarEvento(){
         cantEventos+=1
     }
@@ -50,12 +54,18 @@ class Furia inherits Emocion{
 class Alegria inherits Emocion{
 
     override method puedeLiberarse(persona){
-        return super(persona) && persona.cantEventos().even()
+        return super(persona) && self.cantEventos().even()
     }
 
     override method liberarse(evento){
         
-        intensidad = 0.max(super(evento)) // >= 0
+        intensidad = 0.max(self.alLiberarse(evento)) // >= 0
+
+        /*super(evento)
+        
+        if (intensidad < 0){
+            intensidad=0
+        }*/
         
     }
 
@@ -65,7 +75,13 @@ class Tristeza inherits Emocion{
 
     var causa = self.causaInicial()
 
+
+
     method causaInicial()="melancolia"
+
+    method setCausa(nuevaCausa){
+        causa=nuevaCausa
+    }
 
     override method puedeLiberarse(persona){
         return super(persona) && causa != "melancolia"
@@ -80,6 +96,23 @@ class Tristeza inherits Emocion{
 
 class DesagradoYTemor inherits Emocion{
     override method puedeLiberarse(persona){
-        return super(persona) && persona.cantEventos().size() > intensidad
+        return super(persona) && self.cantEventos() > intensidad
     }
+}
+
+class Ansiedad inherits Emocion{
+    var nivelAnsiedad
+
+    method coeficienteAnsiedad() = nivelAnsiedad ** 2 + cantEventos / 2
+    
+
+    override method puedeLiberarse(persona){
+        return super(persona) && self.coeficienteAnsiedad() > intensidad
+    }
+
+    override method liberarse(evento){
+        super(evento)
+        nivelAnsiedad -= intensidad
+    }
+
 }
