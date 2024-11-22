@@ -27,6 +27,7 @@ describe "Tests"{
         
         assert.equals(1, furia.cantEventos())
 
+        tristeza.setCausa("Chiquito Romero")
         assert.equals(2, tristeza.cantEventos())
 
         // intensidad (5000) -= impacto evento (100)
