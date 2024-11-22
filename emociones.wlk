@@ -59,15 +59,7 @@ class Alegria inherits Emocion{
     }
 
     override method liberarse(evento){
-        
-        //intensidad = 0.max(self.alLiberarse(evento)) // >= 0
-
-        super(evento)
-        
-        if (intensidad < 0){
-            intensidad=0
-        }
-        
+        intensidad = 0.max(self.alLiberarse(evento)) // >= 0        
     }
 
 }
@@ -106,6 +98,8 @@ class Ansiedad inherits Emocion{
 
     // Nuevo valor
     var nivelAnsiedad
+
+    method nivelAnsiedad()=nivelAnsiedad
 
     // Nuevo cálculo que determina si la ansiedad puede liberarse
     method coeficienteAnsiedad() = nivelAnsiedad ** 2 + cantEventos / 2
