@@ -5,7 +5,7 @@ class Persona{
 
     // 1)
     method esAdolescente(){
-        return edad >= 12 || edad < 19
+        return edad >= 12 && edad < 19
     }
 
     // 2)
@@ -20,12 +20,10 @@ class Persona{
 
     // 4)
     method vivirEvento(evento){
-        emociones.forEach({emocion => emocion.puedeLiberarse(self)
-                            emocion.liberarse(evento)
-                            emocion.agregarEvento()})
+        emociones.forEach({emocion=>emocion.agregarEvento()})
+        emociones.forEach({emocion=>emocion.puedeLiberarse(self)
+                            emocion.liberarse(Evento)})
     }
-
-
 
 }
 
