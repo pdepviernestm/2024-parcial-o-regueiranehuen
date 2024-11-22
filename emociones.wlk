@@ -74,13 +74,10 @@ class Tristeza inherits Emocion{
 
     var causa = self.causaInicial()
 
+    method causa()=causa
 
 
     method causaInicial()="melancolia"
-
-    method setCausa(nuevaCausa){
-        causa=nuevaCausa
-    }
 
     override method puedeLiberarse(persona){
         return super(persona) && causa != "melancolia"
