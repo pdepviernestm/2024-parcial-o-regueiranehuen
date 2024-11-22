@@ -7,7 +7,7 @@ describe "Tests"{
 
     var furia = new Furia(valorElevada=40,palabrotas=["pedazo de perro"],cantEventos=0)
     
-    var alegria = new Furia(valorElevada=40,intensidad = 5,cantEventos=3)
+    var alegria = new Alegria(valorElevada=40,intensidad = 5,cantEventos=3)
     var tristeza = new Tristeza(valorElevada=40,intensidad=50,cantEventos=0,causa="cualquier cosa")
     var temor = new DesagradoYTemor(valorElevada=40, intensidad=5)
     var ansiedad=new Ansiedad(valorElevada=40, intensidad=5000,nivelAnsiedad=9000)
