@@ -21,8 +21,9 @@ class Persona{
     // 4)
     method vivirEvento(evento){
         emociones.forEach({emocion=>emocion.agregarEvento()})
-        emociones.forEach({emocion=>emocion.puedeLiberarse(self)
-                            emocion.liberarse(evento)})
+
+        var emocionesPuedenLiberarse = emociones.filter({emocion=>emocion.puedeLiberarse(self)})
+        emocionesPuedenLiberarse.forEach({emocion=>emocion.liberarse(evento)})
     }
 
 
