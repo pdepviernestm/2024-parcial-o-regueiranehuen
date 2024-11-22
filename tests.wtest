@@ -1,0 +1,29 @@
+import personas.*
+import eventos.*
+import emociones.*
+
+
+describe "Tests"{
+
+    var furia = new Furia(valorElevada=40,intensidad = 5,palabrotas=["zapallo"],cantEventos=2)
+    var alegria = new Furia(valorElevada=40,intensidad = 5,cantEventos=3)
+
+
+    var pepe = new Persona(edad = 13,emociones=[furia])
+
+    var perdioBoca = new Evento(descripcion="perdio boca",impacto = 100)
+
+    var grupo1 = new Grupo(integrantes=[pepe])
+
+    test "Todos los integrantes del grupo1 viven el mismo evento y todas sus emociones suman un evento"{
+
+        var cantEventosFuria = furia.cantEventos()
+
+        grupo1.vivirMismoEvento(perdioBoca)
+        
+        
+        assert.equals(furia.cantEventos(), cantEventosFuria + 1)
+        
+
+    }
+}
