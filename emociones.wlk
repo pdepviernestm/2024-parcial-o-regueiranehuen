@@ -36,7 +36,11 @@ class Emocion{
 class Furia inherits Emocion{
     
     method intensidadInicial(){
-        intensidad = 100
+        return 100
+    }
+
+    method setIntensidad(nuevaIntensidad){
+        intensidad=nuevaIntensidad
     }
 
     var palabrotas = []
