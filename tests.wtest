@@ -9,10 +9,10 @@ describe "Tests"{
     var alegria = new Furia(valorElevada=40,intensidad = 5,cantEventos=3)
     var tristeza = new Tristeza(valorElevada=40,intensidad=5,cantEventos=0)
     var temor = new DesagradoYTemor(valorElevada=40, intensidad=5)
-    var ansiedad=new Ansiedad(valorElevada=40, intensidad=5,nivelAnsiedad=9000)
+    var ansiedad=new Ansiedad(valorElevada=40, intensidad=5000,nivelAnsiedad=9000)
 
     var pepe = new Persona(edad = 13,emociones=[furia,tristeza,ansiedad,temor])
-    var carlos = new Persona(edad = 13,emociones=[tristeza])
+    var carlos = new Persona(edad = 13,emociones=[tristeza,alegria])
 
     var perdioBoca = new Evento(descripcion="perdio boca",impacto = 100)
     
@@ -20,7 +20,7 @@ describe "Tests"{
     var grupo1 = new Grupo(integrantes=[pepe,carlos])
 
 
-    test "Todos los integrantes del grupo1 ven perder a Boca y furia suma un evento, mientras tristeza suma 2"{
+    test "Todos los integrantes del grupo1 ven perder a Boca y furia suma un evento, mientras tristeza suma 2. Ansiedad pasa a tener 4100 de nivel de ansiedad"{
 
         
         grupo1.vivirMismoEvento(perdioBoca)
@@ -28,6 +28,13 @@ describe "Tests"{
         assert.equals(1, furia.cantEventos())
 
         assert.equals(2, tristeza.cantEventos())
+
+        // intensidad (5000) -= impacto evento (100)
+        // intensidad = 4900
+
+        // nivel ansiedad (9000) -= intensidad (4900)
+
+        assert.equals(4100,ansiedad.nivelAnsiedad())
 
     }
 }
