@@ -65,3 +65,9 @@ class Tristeza inherits Emocion{
     }
 
 }
+
+class DesagradoYTemor inherits Emocion{
+    override method puedeLiberarse(persona){
+        return super(persona) && persona.cantEventos().size() > intensidad
+    }
+}
