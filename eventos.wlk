@@ -1,6 +1,6 @@
 class Evento{
     var descripcion = ""
-    var impacto
+    var impacto // > 0
 
     method impacto()=impacto
     method descripcion()=descripcion
