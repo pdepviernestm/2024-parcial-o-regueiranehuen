@@ -22,8 +22,9 @@ class Persona{
     method vivirEvento(evento){
         emociones.forEach({emocion=>emocion.agregarEvento()})
         emociones.forEach({emocion=>emocion.puedeLiberarse(self)
-                            emocion.liberarse(Evento)})
+                            emocion.liberarse(evento)})
     }
+
 
 }
 
@@ -32,6 +33,7 @@ class Grupo{
 
     // 6)
     method vivirMismoEvento(evento){
-        integrantes.forEach({integrante=>integrante.vivirEvento(Evento)})
+        integrantes.forEach({integrante=>integrante.vivirEvento(evento)})
     }
+
 }
