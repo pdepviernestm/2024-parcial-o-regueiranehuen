@@ -5,7 +5,7 @@ import emociones.*
 
 describe "Tests"{
 
-    var furia = new Furia(valorElevada=40,intensidad = 5,palabrotas=["zapallo"],cantEventos=0)
+    var furia = new Furia(valorElevada=40,intensidad = 41,palabrotas=["pedazo de perro"],cantEventos=0)
     var alegria = new Furia(valorElevada=40,intensidad = 5,cantEventos=3)
     var tristeza = new Tristeza(valorElevada=40,intensidad=5,cantEventos=0)
     var temor = new DesagradoYTemor(valorElevada=40, intensidad=5)
@@ -20,7 +20,7 @@ describe "Tests"{
     var grupo1 = new Grupo(integrantes=[pepe,carlos])
 
 
-    test "Todos los integrantes del grupo1 ven perder a Boca y furia suma un evento, mientras tristeza suma 2. Ansiedad pasa a tener 4100 de nivel de ansiedad"{
+    test "Todos los integrantes del grupo1 ven perder a Boca y furia suma un evento, mientras tristeza suma 2. Ansiedad pasa a tener 4100 de nivel de ansiedad. Furia se queda sin palabrotas"{
 
         
         grupo1.vivirMismoEvento(perdioBoca)
@@ -36,6 +36,8 @@ describe "Tests"{
         // nivel ansiedad (9000) -= intensidad (4900)
 
         assert.equals(4100,ansiedad.nivelAnsiedad())
+
+        assert.that(furia.palabrotas().size() == 0)
 
     }
 }
