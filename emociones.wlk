@@ -1,5 +1,6 @@
 // Muchas veces pasa que al liberarse la emoción, algo se altera en ella que hace que no pueda volver a liberarse ante un próximo evento. 
-
+import personas.*
+import eventos.*
 class Emocion{
     var intensidad=0 // Por default
     var valorElevada // 5)
@@ -59,13 +60,13 @@ class Alegria inherits Emocion{
 
     override method liberarse(evento){
         
-        intensidad = 0.max(self.alLiberarse(evento)) // >= 0
+        //intensidad = 0.max(self.alLiberarse(evento)) // >= 0
 
-        /*super(evento)
+        super(evento)
         
         if (intensidad < 0){
             intensidad=0
-        }*/
+        }
         
     }
 
@@ -100,19 +101,26 @@ class DesagradoYTemor inherits Emocion{
     }
 }
 
+// Con inherits heredo los atributos y métodos de la clase Emocion
 class Ansiedad inherits Emocion{
+
+    // Nuevo valor
     var nivelAnsiedad
 
+    // Nuevo cálculo que determina si la ansiedad puede liberarse
     method coeficienteAnsiedad() = nivelAnsiedad ** 2 + cantEventos / 2
     
-
+    
+    // Sobreescribo al método puedeLiberarse de la clase padre (Emocion) y lo llamo mediante el método super pasándole la persona por parámetro
     override method puedeLiberarse(persona){
-        return super(persona) && self.coeficienteAnsiedad() > intensidad
+        return super(persona) && self.coeficienteAnsiedad() > intensidad // Nueva condición para que pueda liberarse
     }
 
+    // Sobreescribo el método liberarse de la clase padre
     override method liberarse(evento){
+        // Nuevamente utilizo el método super pero para el método liberarse, pasando el evento por parámetro
         super(evento)
-        nivelAnsiedad -= intensidad
+        nivelAnsiedad -= intensidad // Restarle al nivel de ansiedad la intensidad que fue modificada por el método liberarse de la clase Emoción
     }
 
 }
